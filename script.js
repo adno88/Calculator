@@ -23,10 +23,43 @@ function calculate() {
     else if (currentNumber.innerHTML === '') {
         return;
     }
+    if(sign.innerHTML !== '') {
+        showResult();
+    }
+    previousNumber.innerHTML = currentNumber.innerHTML;
+    sign.innerHTML = this.textContent;
+    currentNumber.innerHTML = '';
 }
 
 function showResult() {
+    if(previousNumber.innerHTML === '' || currentNumber.innerHTML === '') return;
 
+    if(sign.innerHTML === '+') {
+        result = Number(previousNumber.innerHTML) + Number(currentNumber.innerHTML);
+        document.querySelector('.currentNumber').innerHTML = result;
+        previousNumber.innerHTML = '';
+        sign.innerHTML = '';
+    }
+    if(sign.innerHTML === '-') {
+        let result = Number(previousNumber.innerHTML) - Number(currentNumber.innerHTML);
+        document.querySelector('.currentNumber').innerHTML = result;
+        return;
+    }
+    if(sign.innerHTML === 'x') {
+        let result = Number(previousNumber.innerHTML) * Number(currentNumber.innerHTML);
+        document.querySelector('.currentNumber').innerHTML = result;
+        return;
+    }
+    if(sign.innerHTML === ':') {
+        let result = Number(previousNumber.innerHTML) / Number(currentNumber.innerHTML);
+        document.querySelector('.currentNumber').innerHTML = result;
+        return;
+    }
+    if(sign.innerHTML === '2^') {
+        let result = Math.pow(Number(previousNumber.innerHTML),  Number(currentNumber.innerHTML));
+        document.querySelector('.currentNumber').innerHTML = result;
+        return;
+    }
 }
 
 function clearScreen() {
