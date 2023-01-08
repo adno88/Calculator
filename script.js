@@ -43,26 +43,34 @@ function showResult() {
     if(sign.innerHTML === '-') {
         let result = Number(previousNumber.innerHTML) - Number(currentNumber.innerHTML);
         document.querySelector('.currentNumber').innerHTML = result;
-        return;
+        previousNumber.innerHTML = '';
+        sign.innerHTML = '';
     }
     if(sign.innerHTML === 'x') {
         let result = Number(previousNumber.innerHTML) * Number(currentNumber.innerHTML);
         document.querySelector('.currentNumber').innerHTML = result;
-        return;
+        previousNumber.innerHTML = '';
+        sign.innerHTML = '';
     }
     if(sign.innerHTML === ':') {
         let result = Number(previousNumber.innerHTML) / Number(currentNumber.innerHTML);
         document.querySelector('.currentNumber').innerHTML = result;
-        return;
+        previousNumber.innerHTML = '';
+        sign.innerHTML = '';
     }
     if(sign.innerHTML === '2^') {
         let result = Math.pow(Number(previousNumber.innerHTML),  Number(currentNumber.innerHTML));
         document.querySelector('.currentNumber').innerHTML = result;
-        return;
+        previousNumber.innerHTML = '';
+        sign.innerHTML = '';
     }
 }
 
-function clearScreen() {
+function clearButton() {
+    currentNumber.innerHTML = '';
+    previousNumber.innerHTML = '';
+    sign.innerHTML = '';
+    result.innerHTML = '';
 
 }
 
@@ -72,7 +80,7 @@ buttonsOperators.forEach((button) => button.addEventListener('click', calculate)
 
 equals.addEventListener('click', showResult);
 
-clear.addEventListener('click', clearScreen);
+clear.addEventListener('click', clearButton);
 
 buttonsNumbers.forEach((button) => {
     button.addEventListener('click', showNumbers)
