@@ -74,6 +74,10 @@ function clearButton() {
 
 }
 
+/* function delete() {
+    currentNumber.innerHTML = currentNumber.innerHTML.slice(0, -1);
+} */
+
 //nasłuchiwacze
 
 buttonsOperators.forEach((button) => button.addEventListener('click', calculate))
