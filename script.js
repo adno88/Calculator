@@ -5,7 +5,7 @@ const buttonsNumbers = document.querySelectorAll('.number');
 const buttonsOperators = document.querySelectorAll('.operator');
 const equals = document.querySelector('.equals');
 const clear = document.querySelector('.clear');
-
+const deleteLastDigit = document.querySelector('.delete');
 let result = '';
 
 function showNumbers() {
@@ -34,36 +34,34 @@ function calculate() {
 function showResult() {
     if(previousNumber.innerHTML === '' || currentNumber.innerHTML === '') return;
 
-    if(sign.innerHTML === '+') {
-        result = Number(previousNumber.innerHTML) + Number(currentNumber.innerHTML);
-        document.querySelector('.currentNumber').innerHTML = result;
-        previousNumber.innerHTML = '';
-        sign.innerHTML = '';
+    let a = Number(currentNumber.innerHTML);
+    let b = Number(previousNumber.innerHTML);
+    let operator = sign.innerHTML;
+
+    switch(operator) {
+        case '+':
+            result = a + b;
+            break;
+        case '-':
+            result = b - a;
+            break;
+        case 'x':
+            result = a * b;
+            break;
+        case ':':
+            result = b / a;
+            break;
+        case '2^':
+            result = b ** a;
+            break;
     }
-    if(sign.innerHTML === '-') {
-        let result = Number(previousNumber.innerHTML) - Number(currentNumber.innerHTML);
-        document.querySelector('.currentNumber').innerHTML = result;
-        previousNumber.innerHTML = '';
-        sign.innerHTML = '';
-    }
-    if(sign.innerHTML === 'x') {
-        let result = Number(previousNumber.innerHTML) * Number(currentNumber.innerHTML);
-        document.querySelector('.currentNumber').innerHTML = result;
-        previousNumber.innerHTML = '';
-        sign.innerHTML = '';
-    }
-    if(sign.innerHTML === ':') {
-        let result = Number(previousNumber.innerHTML) / Number(currentNumber.innerHTML);
-        document.querySelector('.currentNumber').innerHTML = result;
-        previousNumber.innerHTML = '';
-        sign.innerHTML = '';
-    }
-    if(sign.innerHTML === '2^') {
-        let result = Math.pow(Number(previousNumber.innerHTML),  Number(currentNumber.innerHTML));
-        document.querySelector('.currentNumber').innerHTML = result;
-        previousNumber.innerHTML = '';
-        sign.innerHTML = '';
-    }
+    currentNumber.innerHTML = result;
+    previousNumber.innerHTML = '';
+    sign.innerHTML = '';
+}
+
+function del() {
+    currentNumber.innerHTML = currentNumber.innerHTML.slice(0, -1);
 }
 
 function clearButton() {
@@ -74,17 +72,13 @@ function clearButton() {
 
 }
 
-/* function delete() {
-    currentNumber.innerHTML = currentNumber.innerHTML.slice(0, -1);
-} */
-
-//nasłuchiwacze
-
 buttonsOperators.forEach((button) => button.addEventListener('click', calculate))
 
 equals.addEventListener('click', showResult);
 
 clear.addEventListener('click', clearButton);
+
+deleteLastDigit.addEventListener('click', del);
 
 buttonsNumbers.forEach((button) => {
     button.addEventListener('click', showNumbers)
