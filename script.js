@@ -6,6 +6,7 @@ const buttonsOperators = document.querySelectorAll('.operator');
 const equals = document.querySelector('.equals');
 const clear = document.querySelector('.clear');
 const deleteLastDigit = document.querySelector('.delete');
+const mohistory = document.querySelector('.list');
 let result = '';
 
 function showNumbers() {
@@ -55,6 +56,8 @@ function showResult() {
             result = b ** a;
             break;
     }
+
+    addToHistory();
     currentNumber.innerHTML = result;
     previousNumber.innerHTML = '';
     sign.innerHTML = '';
@@ -70,6 +73,13 @@ function clearButton() {
     sign.innerHTML = '';
     result.innerHTML = '';
 
+}
+
+function addToHistory() {
+    const historyItem = document.createElement('li');
+    historyItem.innerHTML = `${currentNumber.innerHTML} ${sign.innerHTML} ${previousNumber.innerHTML} = ${result}`
+    historyItem.classList.add('list-item');
+    mohistory.appendChild(historyItem);
 }
 
 buttonsOperators.forEach((button) => button.addEventListener('click', calculate))

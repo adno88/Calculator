@@ -64,11 +64,19 @@ button:hover {
 #red:hover {
     background-color: rgba(255, 0, 0, 0.5);
 }
-.history {
+.mohistory {
     height: 60vh;
     width: 20vw;
     background-color: rgba(25, 25, 25, 0.1);
     margin: 10px;
     text-align: center;
     color: white;
+    font-weight: bold;
+}
+.list {
+    list-style: none;
+}
+.list-item {
+    margin: 15px 0px;
+    letter-spacing: 2px;
 }
