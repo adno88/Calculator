@@ -80,3 +80,11 @@ button:hover {
     margin: 15px 0px;
     letter-spacing: 2px;
 }
+.clearHistory {
+    padding: 5px 10px;
+    margin-top: 32px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+}

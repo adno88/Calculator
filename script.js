@@ -7,6 +7,7 @@ const equals = document.querySelector('.equals');
 const clear = document.querySelector('.clear');
 const deleteLastDigit = document.querySelector('.delete');
 const mohistory = document.querySelector('.list');
+const buttonHistory = document.querySelector('.clearHistory');
 let result = '';
 
 function showNumbers() {
@@ -82,6 +83,10 @@ function addToHistory() {
     mohistory.appendChild(historyItem);
 }
 
+function clearHistory() {
+    mohistory.innerHTML = '';
+}
+
 buttonsOperators.forEach((button) => button.addEventListener('click', calculate))
 
 equals.addEventListener('click', showResult);
@@ -93,3 +98,5 @@ deleteLastDigit.addEventListener('click', del);
 buttonsNumbers.forEach((button) => {
     button.addEventListener('click', showNumbers)
 })
+
+buttonHistory.addEventListener('click', clearHistory);
